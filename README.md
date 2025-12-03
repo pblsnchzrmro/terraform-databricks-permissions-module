@@ -69,3 +69,40 @@ git commit -m "docs: update README with pre-commit instructions"
 git commit -m "updated files"
 git commit -m "fix stuff"
 ```
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | >= 1.80 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_databricks"></a> [databricks](#provider\_databricks) | >= 1.80 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [databricks_grants.catalog_permissions](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/grants) | resource |
+| [databricks_grants.schema_permissions](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/grants) | resource |
+| [databricks_grants.table_permissions](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/grants) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_config"></a> [config](#input\_config) | Permissions configuration from YAML file | `any` | n/a | yes |
+| <a name="input_databricks_workspace"></a> [databricks\_workspace](#input\_databricks\_workspace) | Databricks workspace URL | `string` | n/a | yes |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
