@@ -1,0 +1,24 @@
+name: Security Scan
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  kics:
+    name: Run security scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: KICS scanner
+        uses: checkmarx/kics-github-action@v2.1.15
+        with:
+          path: .
+          output_path: securityResults/
+          output_formats: 'sarif'
+          enable_comments: true
+          enable_annotations: true
+          ignore_on_exit: results

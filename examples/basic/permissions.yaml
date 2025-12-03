@@ -1,0 +1,26 @@
+catalogs:
+  - name: my_catalog
+    grants:
+      - principal: users
+        privileges: ["USE_CATALOG", "USE_SCHEMA"]
+      - principal: data_engineers
+        privileges: ["ALL_PRIVILEGES"]
+
+schemas:
+  - catalog_name: my_catalog
+    name: my_schema
+    grants:
+      - principal: users
+        privileges: ["USE_SCHEMA", "SELECT"]
+      - principal: data_engineers
+        privileges: ["ALL_PRIVILEGES"]
+
+tables:
+  - catalog_name: my_catalog
+    schema_name: my_schema
+    name: my_table
+    grants:
+      - principal: users
+        privileges: ["SELECT"]
+      - principal: data_engineers
+        privileges: ["ALL_PRIVILEGES", "MODIFY"]

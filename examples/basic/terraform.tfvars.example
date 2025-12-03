@@ -1,0 +1,2 @@
+permissions_file     = "permissions.yaml"
+databricks_workspace = "https://adb-3842051123482980.0.azuredatabricks.net"
