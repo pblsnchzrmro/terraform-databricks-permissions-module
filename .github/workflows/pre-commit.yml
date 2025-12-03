@@ -28,11 +28,19 @@ jobs:
           echo "Minimum version: ${{ steps.minmax.outputs.minVersion }}"
           echo "Maximum version: ${{ steps.minmax.outputs.maxVersion }}"
 
-      - name: Run pre-commit (min version)
-        uses: clowdhaus/terraform-composite-actions/pre-commit@v1.14.0
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform-version: ${{ steps.minmax.outputs.minVersion }}
-          args: 'terraform_validate --color=always --show-diff-on-failure --files ./* --verbose'
+          terraform_version: ${{ steps.minmax.outputs.minVersion }}
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+
+      - name: Terraform Validate
+        run: terraform validate
 
   precommit-max-version:
     name: Validate with maximum supported version
@@ -53,8 +61,16 @@ jobs:
           echo "Minimum version: ${{ steps.minmax.outputs.minVersion }}"
           echo "Maximum version: ${{ steps.minmax.outputs.maxVersion }}"
 
-      - name: Run pre-commit (max version)
-        uses: clowdhaus/terraform-composite-actions/pre-commit@v1.14.0
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform-version: ${{ steps.minmax.outputs.maxVersion }}
-          args: 'terraform_validate --color=always --show-diff-on-failure --files ./*'
+          terraform_version: ${{ steps.minmax.outputs.maxVersion }}
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init -backend=false
+
+      - name: Terraform Validate
+        run: terraform validate
