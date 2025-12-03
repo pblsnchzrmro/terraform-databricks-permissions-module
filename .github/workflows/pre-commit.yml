@@ -32,7 +32,7 @@ jobs:
         uses: clowdhaus/terraform-composite-actions/pre-commit@v1.14.0
         with:
           terraform-version: ${{ steps.minmax.outputs.minVersion }}
-          args: 'terraform_validate --color=always --show-diff-on-failure --files ./*'
+          args: 'terraform_validate --color=always --show-diff-on-failure --files ./* --verbose'
 
   precommit-max-version:
     name: Validate with maximum supported version
