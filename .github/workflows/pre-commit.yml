@@ -28,10 +28,6 @@ jobs:
           echo "Minimum version: ${{ steps.minmax.outputs.minVersion }}"
           echo "Maximum version: ${{ steps.minmax.outputs.maxVersion }}"
 
-      - name: Terraform Init
-        run: terraform init -backend=false
-        working-directory: '.'
-
       - name: Run pre-commit (min version)
         uses: clowdhaus/terraform-composite-actions/pre-commit@v1.14.0
         with:
@@ -56,10 +52,6 @@ jobs:
         run: |
           echo "Minimum version: ${{ steps.minmax.outputs.minVersion }}"
           echo "Maximum version: ${{ steps.minmax.outputs.maxVersion }}"
-
-      - name: Terraform Init
-        run: terraform init -backend=false
-        working-directory: '.'
 
       - name: Run pre-commit (max version)
         uses: clowdhaus/terraform-composite-actions/pre-commit@v1.14.0
